@@ -91,7 +91,7 @@ namespace EdiFabric.Framework
 
         private static XDocument Serialize<T>(this T instance, string nameSpace)
         {
-            var type = typeof (T);
+            var type = instance.GetType();
             var serializer = SerializerCache.GetOrAdd(type.FullName, new XmlSerializer(type, nameSpace));
             using (var ms = new MemoryStream())
             {
